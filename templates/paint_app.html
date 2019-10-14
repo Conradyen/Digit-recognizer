@@ -1,73 +1,172 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>paint app</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-        <link rel="stylesheet"
-            href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css">
-        <link rel="stylesheet" type="text/css" href="../static/paint_app.css" />
-    </head>
+  <head>
+    <title>Digit Recognizer</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="../static/paint_app.css" />
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/intro.js@2.9.3/introjs.min.css"
+    />
+  </head>
 
-    <body>
-        <header>
-
-        </header>
-        <div class="container">
-            <h1>paint app!</h1>
-            <p>This is a template for a simple marketing or informational website. It includes a large callout called a
-                jumbotron and three supporting pieces of content. Use it as a starting point to create something more
-                unique.</p>
-            <div class='col text-center'>
-                <a class="btn btn-primary btn-lg" href="#" role="button">source code &raquo;</a>
-            </div>
-            <!-- Example row of columns -->
-            <div class="row">
-                <div class="col-md-6 text-center">
-                    <div class="toolbar">
-                    <a class="selected" id="brush" onclick="changeTool('brush')">
-                        <i class="fas fa-paint-brush fa-3x"></i>
-                    </a>
-                    <a id="eraser" onclick="changeTool('eraser')">
-                        <i class="fas fa-eraser fa-3x"></i>
-                    </a>
-                    <a id="eraser" onclick="clear_canvas()">
-                        <i class="far fa-file fa-3x"></i>
-                    </a>
-                    </div>
-                <canvas id="myCanvas">
-                </canvas>
-                <div>
-                    <a class="btn btn-primary btn-lg" role="button" onclick = "prepareImageForPrediction()">
-                        submit</a>
-                </div>
-                <div>
-                    <canvas id="afterPreprocessing">
-                    </canvas>
-                </div>
-                </div>
-                <div class="col-md-6">
-                    <h2>Heading</h2>
-                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-                        condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis
-                        euismod. Donec sed odio dui. </p>
-                    <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-                </div>
-            </div>
+  <body>
+    <header></header>
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <div>
+          <h1 data-step="1" data-intro="Let's get started !">
+            Digit Recognizer
+          </h1>
         </div>
-           
-            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-                crossorigin="anonymous"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-                integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-                crossorigin="anonymous"></script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-                integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-                crossorigin="anonymous"></script>
-            <script src="https://use.fontawesome.com/releases/v5.5.0/js/all.js"></script>
-            <script src = '../static/js/paint_app.js'></script>
+        <p>
+          A python implementation of neural net deploy on AWS. The model is
+          trained on kaggle digit recognizer data set a trim version of MNIST
+          (42000 training images). architecture of the model follows 5 layer
+          LeNet with slightly change. The model achieves 99.2% accuracy on
+          kaggle leader board after 50 epoch. More details are on github.
+        </p>
+        <div class="col text-center">
+          <a
+            class="btn btn-large btn-dark"
+            href="javascript:void(0);"
+            onclick="javascript:introJs().start();"
+            >Show me how</a
+          >
+        </div>
 
-        </body>
+        <!-- Example row of columns -->
+        <div class="row">
+          <div class="col-md-6 text-center">
+            <canvas
+              id="myCanvas"
+              data-step="2"
+              data-intro="Write a digit here "
+            >
+            </canvas>
+            <div class="toolbar">
+              <a class="selected" id="brush" onclick="changeTool('brush')">
+                <i class="fas fa-paint-brush fa-3x"></i>
+              </a>
+              <a id="eraser" onclick="clear_canvas()">
+                <i
+                  class="far fa-file fa-3x"
+                  data-step="3"
+                  data-intro="Click here to clear all writings ."
+                ></i>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div
+              data-step="4"
+              data-intro="Out put from LeNet will be display over here. "
+            >
+              <div class="result_div">
+                <span id="result0">0</span>
+              </div>
+              <div class="result_div">
+                <span id="result1">1</span>
+              </div>
+              <div class="result_div">
+                <span id="result2">2</span>
+              </div>
+              <div class="result_div">
+                <span id="result3">3</span>
+              </div>
+              <div class="result_div">
+                <span id="result4">4</span>
+              </div>
+              <div class="result_div">
+                <span id="result5">5</span>
+              </div>
+              <div class="result_div">
+                <span id="result6">6</span>
+              </div>
+              <div class="result_div">
+                <span id="result7">7</span>
+              </div>
+              <div class="result_div">
+                <span id="result8">8</span>
+              </div>
+              <div class="result_div">
+                <span id="result9">9</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="col">
+          <p id="disc">
+            Since the model is train on images with size 28 by 28 the input
+            digit has to be preprocess before feed into the neural net. The hand
+            written digits first being invert and centered by cropping out all
+            columns and rows that are all zeros. Padded to 280 by 280 and down
+            sampled to 28 by 28 pixels before the model can make prediction.
+          </p>
+        </div>
+        <div class="col text-center">
+          <a
+            class="btn btn-dark btn-lg"
+            href="https://github.com/Conradyen/Digit-recognizer-train"
+            role="button"
+            >More Detail &raquo;</a
+          >
+        </div>
+      </div>
+    </div>
+    <footer class="text-center">
+      <div>
+        <p id="neon">
+          <a>All we have is now</a>
+        </p>
+      </div>
+      <p style="color: #e4e3e3">&copy;Ming-Hsuan Yen, 2019</p>
+
+      <p>
+        <a
+          class="icon"
+          href="https://github.com/Conradyen"
+          style="color: #e4e3e3"
+        >
+          <i class="fab fa-github-square"></i>
+        </a>
+        <a
+          class="icon"
+          href="https://www.linkedin.com/in/minghsuanyen"
+          style="color: #e4e3e3"
+        >
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </p>
+    </footer>
+
+    <!--script-->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://use.fontawesome.com/releases/v5.5.0/js/all.js"></script>
+
+    <script src="../static/js/paint_app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/intro.js@2.9.3/intro.min.js"></script>
+  </body>
 </html>
-
