@@ -1,0 +1,197 @@
+body {
+  line-height: 1.3;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+.jumbotron {
+  background-color: #f4f4f4;
+}
+
+.container {
+  width: 95%;
+  background-color: #f4f4f4;
+}
+.row {
+  margin-top: 30px;
+  background-color: #f4f4f4;
+}
+.icon {
+  padding: 15px;
+}
+.col-md-12 h1 {
+  top: 10%;
+}
+.toolbar {
+  width: 100%;
+  background-color: #f3f3f3;
+}
+.selected {
+  filter: invert(1);
+}
+
+.toolbar a :hover {
+  filter: invert(1);
+}
+#myCanvas {
+  margin-top: 35%;
+  width: 280px;
+  height: 280px;
+  background-color: #fff;
+}
+
+#resultCanvas {
+  margin-top: 0;
+  width: 280px;
+  height: 280px;
+  background-color: #fff;
+}
+
+#afterPreprocessing {
+  margin-top: 0;
+  width: 280px;
+  height: 280px;
+  background-color: #fff;
+}
+
+#disc {
+  margin-top: 20;
+}
+
+.col-md-6 {
+  height: 700px;
+  background-color: #f4f4f4;
+  text-align: center;
+}
+.paint_board {
+  background-color: #fff;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.bar {
+  fill: orange;
+}
+
+.bar:hover {
+  fill: orangered;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+.result_div {
+  padding: 2px;
+  text-align: center;
+}
+
+.result_div > span {
+  display: inline-block;
+  width: 50px;
+  text-align: center;
+  color: #fff;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 35px;
+  border-radius: 25px;
+  height: 50px;
+  padding: 5px;
+  background-color: #969292;
+}
+.introjs-helperNumberLayer {
+  background: linear-gradient(to bottom, #5ca8ff 0, #023d8a 100%) !important;
+}
+
+footer {
+  padding: 20px;
+  margin-top: 20px;
+  color: #797777;
+  background-color: #727171;
+  text-align: center;
+}
+
+#neon {
+  color: #727171;
+  font-size: 3em;
+}
+
+#neon a {
+  text-decoration: none;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+  font-family: "Dancing Script", cursive;
+}
+
+#neon a:hover {
+  -webkit-animation: neon3 1.5s ease-in-out infinite alternate;
+  -moz-animation: neon3 1.5s ease-in-out infinite alternate;
+  animation: neon3 1.5s ease-in-out infinite alternate;
+  color: rgb(253, 231, 106);
+}
+
+@-webkit-keyframes neon3 {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ffdd1b,
+      0 0 70px #ffdd1b, 0 0 80px #ffdd1b, 0 0 100px #ffdd1b, 0 0 150px #ffdd1b;
+  }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ffdd1b,
+      0 0 35px #ffdd1b, 0 0 40px #ffdd1b, 0 0 50px #ffdd1b, 0 0 75px #ffdd1b;
+  }
+}
+
+@-moz-keyframes neon3 {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ffdd1b,
+      0 0 70px #ffdd1b, 0 0 80px #ffdd1b, 0 0 100px #ffdd1b, 0 0 150px #ffdd1b;
+  }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ffdd1b,
+      0 0 35px #ffdd1b, 0 0 40px #ffdd1b, 0 0 50px #ffdd1b, 0 0 75px #ffdd1b;
+  }
+}
+
+@keyframes neon3 {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ffdd1b,
+      0 0 70px #ffdd1b, 0 0 80px #ffdd1b, 0 0 100px #ffdd1b, 0 0 150px #ffdd1b;
+  }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ffdd1b,
+      0 0 35px #ffdd1b, 0 0 40px #ffdd1b, 0 0 50px #ffdd1b, 0 0 75px #ffdd1b;
+  }
+}
