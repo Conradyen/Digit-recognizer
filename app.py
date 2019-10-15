@@ -26,40 +26,33 @@ CORS(app)
 model = None
 
 def load_lenet(weights = 'Lenet_model_01.h5'):
-
+    # lenet model
     model = Sequential()
     model.add(Conv2D(filters = 32, kernel_size = (5,5),padding = 'Same',activation ='relu', input_shape = (28,28,1)))
     model.add(Conv2D(filters = 32, kernel_size = (5,5),padding = 'Same', activation ='relu'))
-    #model.add(Dropout(0.25))
     model.add(Conv2D(filters = 64, kernel_size = (3,3),padding = 'Same',activation ='relu'))
     model.add(MaxPool2D(pool_size=(2,2), strides=(2,2)))
     model.add(Conv2D(filters = 64, kernel_size = (3,3),padding = 'Same',activation ='relu'))
     model.add(Flatten())
     model.add(Dense(256, activation = "relu"))
-    #model.add(Dropout(0.5))
     model.add(Dense(10))
     model.load_weights(weights, by_name=True)
     model._make_predict_function()
     return model
 
 def build_model():
-
+    #build model
     global model
     global graph
 
     model = load_lenet(weights='Lenet_model_01.h5')
     graph = tf.get_default_graph()
 
-#def preprocess_img(b64_img):
-
 def pad_image(img, pad_t, pad_r, pad_b, pad_l):
-    """Add padding of zeroes to an image.
+    """
+    Add padding of zeroes to an image.
     Add padding to an array image.
-    :param img:
-    :param pad_t:
-    :param pad_r:
-    :param pad_b:
-    :param pad_l:
+    return padded square image
     """
     height, width= img.shape
 
@@ -82,8 +75,8 @@ def pad_image(img, pad_t, pad_r, pad_b, pad_l):
     return img
 
 def center_image(img):
-    """Return a centered image.
-    :param img:
+    """
+    Return a centered image.
     """
     col_sum = np.where(np.sum(img, axis=0) > 0)
     row_sum = np.where(np.sum(img, axis=1) > 0)
@@ -105,7 +98,7 @@ def center_image(img):
     return padded_image
 
 def resize_image(img, size=(28,28)):
-    print(img.shape)
+    # resize image to 28 * 28
     h, w = img.shape
 
     if h == w:
@@ -140,7 +133,7 @@ def toencodeStr(arr):
 
 @app.route("/app/recognize", methods=['POST'])
 def regonize():
-
+    #post method 
     if request.method == 'POST':
         data = str(request.data,encoding = "utf-8").split(';')[1]
 
@@ -154,9 +147,9 @@ def regonize():
 
         img = center_image(pixels)
         nninput = resize_image(img)/255
-    print(np.maximum(nninput))
+    #reshape to 4d np array 
     img = nninput.reshape(1, 28, 28, -1)
-    print(img.shape)
+    
     with graph.as_default():
         pred = model.predict(img)
     result = np.argmax(pred)
@@ -170,11 +163,6 @@ def regonize():
 def digit_reg():
 
     return render_template("paint_app.html")
-
-@app.route("/")
-def index():
-
-    return render_template("index.html")
 
 
 if __name__ == '__main__':
