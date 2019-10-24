@@ -45,23 +45,18 @@ def load_lenet(weights = 'Lenet_model_01.h5'):
     return model
 
 def build_model():
-
+    #build model
     global model
     global graph
 
     model = load_lenet(weights='Lenet_model_01.h5')
     graph = tf.get_default_graph()
 
-#def preprocess_img(b64_img):
-
 def pad_image(img, pad_t, pad_r, pad_b, pad_l):
-    """Add padding of zeroes to an image.
+    """
+    Add padding of zeroes to an image.
     Add padding to an array image.
-    :param img:
-    :param pad_t:
-    :param pad_r:
-    :param pad_b:
-    :param pad_l:
+    return padded square image
     """
     height, width= img.shape
 
@@ -84,8 +79,8 @@ def pad_image(img, pad_t, pad_r, pad_b, pad_l):
     return img
 
 def center_image(img):
-    """Return a centered image.
-    :param img:
+    """
+    Return a centered image.
     """
     col_sum = np.where(np.sum(img, axis=0) > 0)
     row_sum = np.where(np.sum(img, axis=1) > 0)
@@ -144,7 +139,7 @@ def toencodeStr(arr):
 
 @app.route("/app/recognize", methods=['POST'])
 def regonize():
-
+    #post method 
     if request.method == 'POST':
         data = str(request.data,encoding = "utf-8").split(';')[1]
 
@@ -174,11 +169,6 @@ def regonize():
 def digit_reg():
 
     return render_template("paint_app.html")
-
-@app.route("/")
-def index():
-
-    return render_template("index.html")
 
 
 if __name__ == '__main__':
