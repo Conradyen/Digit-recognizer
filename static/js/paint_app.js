@@ -48,12 +48,9 @@ var touchAvailable = "createTouch" in document || "ontouchstart" in window;
 document.addEventListener("DOMContentLoaded", setupCanvas);
 
 function setupCanvas() {
+  //set up canvas for hand written digits
   canvas = document.getElementById("myCanvas");
   ctx = canvas.getContext("2d");
-  //canvas_2 = document.getElementById("afterPreprocessing");
-  //ctx_2 = canvas_2.getContext('2d');
-  //canvas_3 = document.getElementById("resultCanvas");
-  //ctx_3 = canvas_3.getContext("2d");
   ctx.strokeStytle = strokeColor;
   ctx.lineWidth = line_width;
   console.log("setup canvas");
@@ -179,20 +176,10 @@ function ReactToMouseMove(e) {
   }
 }
 
-function saveImage() {
-  save_image = ctx.getImageData(0, 0, canvas_width, canvas_height);
-  ctx.drawImage(save_image.data, 0, 0, 28, 28);
-  //let result = JSON.stringify(save_image);
-  //download(save_image.data.toString(), 'json.txt', 'text/plain');
-  //console.log(result);
-}
-
 //clear image
 function clear_canvas() {
   resetArray();
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  //ctx_3.clearRect(0, 0, canvas_3.width, canvas_3.height);
-  //ctx_2.clearRect(0, 0, canvas.width, canvas.height);
   for (let i = 0; i <= 9; i++) {
     let res = "result".concat(i.toString(10));
     document.getElementById(res).style.color = "#fff";
@@ -220,7 +207,6 @@ function DrawBrush() {
     } else {
       ctx.moveTo(brushXPoints[i] - 1, brushYPoints[i]);
     }
-    //ctx.arc(brushXPoints[i], brushYPoints[i], line_width, 0, 2 * Math.PI);
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
     ctx.lineTo(brushXPoints[i], brushYPoints[i]);
@@ -287,9 +273,6 @@ function getcolor(prob) {
 }
 
 function showpred(res) {
-  //ctx_3.font = "150px Comic Sans MS";
-  //ctx_3.textAlign = "center";
-  //ctx_3.fillText(pred, 140, 140);
   pred = res.result;
   prob = res.pred[0];
   for (let i = 0; i <= 9; i++) {
@@ -334,7 +317,6 @@ function block_mean(img, x, y) {
   let mean = 0;
   for (let i = 0; i < 4 * 10 * 10; i += 4) {
     mean += img.data[y * (10 * 4) + x * 4 + i];
-    //console.log(img.data[i]);
   }
   return mean / 100;
 }
@@ -353,12 +335,3 @@ function draw(ctx, color, lineWidth, x1, y1, x2, y2) {
 }
 
 //============================================================================
-
-// download file
-function download(content, fileName, contentType) {
-  var a = document.createElement("a");
-  var file = new Blob([content], { type: contentType });
-  a.href = URL.createObjectURL(file);
-  a.download = fileName;
-  a.click();
-}
